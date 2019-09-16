@@ -2,17 +2,22 @@
 #include <stdio.h>
 #include <pthread.h>
 #include <stdlib.h>
+#include <string.h>
 #include <errno.h>
 
+#define ERROR_BUFFER_LEN 256
 #define STRING_NUM 10
+
 void* thread_function(void* arg);
 pthread_t child_thread;
 int main(void) {
 
     int err;
+    char err_buf[ERROR_BUFFER_LEN];
     err  = pthread_create(&child_thread, NULL, thread_function, NULL);
     if (err != 0) {
-       fprintf(stderr, "Can't create thread. Exit.\n");  
+       strerror_r(errno, err_buf, (size_t)ERROR_BUFFER_LEN);
+       fprintf(stderr, "Error with pthread_create: %s\n", err_buf);
        return (EXIT_FAILURE);
     }
 

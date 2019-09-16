@@ -5,7 +5,7 @@ ifeq ($(OS),SunOS)
 LDFLAGS=-mt -lpthread
 CFLAGS=-c -std=c99 -mt 
 endif
-EXECUTABLE=task1
+EXECUTABLE=task2
 SOURCE=$(EXECUTABLE)_main.c
 OBJECTS=$(SOURCE:.c=.o)
 
