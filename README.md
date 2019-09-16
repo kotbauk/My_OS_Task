@@ -1,2 +1,2 @@
 # My_OS_Task
-Third courseOS tasks
+Third course OS tasks
